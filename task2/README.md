@@ -31,4 +31,4 @@ Explanations:
 - Run the yml file
 
 At the end, my image is pushed into the Docker Hub repository.
-![Final Result](/Screenshots/final_task2.png)
+![Final Result](/task2/Screenshots/final_task2.png)
