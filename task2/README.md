@@ -15,6 +15,7 @@ The steps I used to create my Dockerfile:
 	- docker build --> build the docker image
 	- -t task2     --> specify the name of the docker image 
 	- .            --> it means that the Dockerfile is in the current directory
+
 ![Build](/task2/Screenshots/task2_docker_build.png)
 ![Check](/task2/Screenshots/task2_check.png)
 
@@ -27,12 +28,14 @@ The steps I used to create my Dockerfile:
 	- Click on "New repository secret" 
 	- At name I typed "DOCKERHUB_USERNAME" and the Secret is my Docker Hub username 
 	  (idem for password)
+
 ![Secrets](/task2/Screenshots/secrets.png)
 
-- I created a .github/workflows folder into my task2 folder and I pushed all of my files into the Github repository
+- I pushed all of my files into the Github repository
 - Click on the Actions button (in Github) and click "Set up a new workflow"
 - Add the logic to the main.yml file and commit the changes
 - Run the yml file
+
 ![Workflows](/task2/Screenshots/workflows.png)
 
 At the end, my image is pushed into the Docker Hub repository.
