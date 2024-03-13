@@ -12,7 +12,7 @@ COPY app.py .
 # RUN pip install <numele_pachetului>
 
 # Expose the port on which the application will run
-# EXPOSE <3001>
+# EXPOSE 3001
 
 # Definim comanda care va rula aplicația atunci când containerul este pornit
 CMD [ "python", "app.py" ]
