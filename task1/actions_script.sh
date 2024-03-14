@@ -1,3 +1,29 @@
+# Implement error handling to check if the script is executed with appropriate privileges and exit gracefully with an informative message if not
+check_privileges() {
+    if [[ $EUID -ne 0 ]]; then
+        echo "Error: This script must be run as root."
+        exit 1
+    fi
+}
+
+# Read the passwd file
+
+read_passwd_file() {
+    echo "Contents of the passwd file:"
+    cat /etc/passwd
+}
+
+# Check the file name 
+
+check_file_name() {
+    filename="/etc/passwd"
+    if [ -f "$filename" ]; then
+        echo "The file name is \"passwd\""
+    else
+        echo "The file name is not \"passwd\""
+    fi
+}
+
 # 1. Print the home directory
 
 print_home_dir() {
@@ -27,12 +53,14 @@ find_home_dir(){
 
 # 5. List users with specific UID range (e.g. 1000-1010)
 
-print_users_UID(){
-	read -p "Enter the UID range (e.g. 1000-1010): " uid_range
-	echo "Users with UID in range $uid_range:"
-	awk -v range="$uid_range" -F: '$3 >= (split(range, a, "-")[1]) && $3 <= (split(range, a, "-")[2]) { print $1 }' /etc/passwd
-
+print_users_UID() {
+    read -p "Enter the UID range (e.g. 1000-1010): " uid_range
+    echo "Users with UID in range $uid_range:"
+    awk -F: -v start="$(echo $uid_range | cut -d'-' -f1)" -v end="$(echo $uid_range | cut -d'-' -f2)" '$3 >= start && $3 <= end { print $1 }' /etc/passwd
 }
+
+
+
 
 # 6. Find users with standard shells like /bin/bash or /bin/sh
 users_with_standard_shells(){
@@ -58,14 +86,31 @@ print_privateIP() {
 print_publicIP(){
 	echo "Public IP:"
 	curl -s ifconfig.me
+	echo " "
 }
 
 # 10. Switch to john user
 
 switch_user() {
+
 	su - john
 }
 
-# 11. Print the home directory
+# 11. Print the home directory - exact ca la exercitiul 1
+
+
+check_privileges
+read_passwd_file
+check_file_name
 print_home_dir
+print_usernames
+print_number_of_users
+find_home_dir
+print_users_UID
+users_with_standard_shells
+replace
+print_privateIP
+print_publicIP
+switch_user
+
 

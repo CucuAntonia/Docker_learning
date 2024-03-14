@@ -3,7 +3,7 @@ The steps for solving task number 1.
 1. Install Docker Desktop
 2. I pulled the ubuntu image from hub.docker.com (https://hub.docker.com/_/ubuntu)
 
-![Sql](/task3/Screenshots/ubuntu.png)
+![Ubuntu](/task1/Screenshots/ubuntu.png)
 
 ![Pull](/task1/Screenshots/pull.png) 
 
@@ -51,3 +51,8 @@ NOTE: The actions_script.sh should be into the container!
 ![Res1](/task1/Screenshots/working.png)
 ![Res2](/task1/Screenshots/working2.png)
 ![Res3](/task1/Screenshots/ex7.png)
+
+11. I copied the actions_script.sh from the container to my task1 folder.
+
+![Copy2](/task1/Screenshots/copy2.png)
+
