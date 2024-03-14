@@ -56,3 +56,34 @@ NOTE: The actions_script.sh should be into the container!
 
 ![Copy2](/task1/Screenshots/copy2.png)
 
+Here are some information about the functions from actions_script.sh script:
+
+check_privileges() - checks if the user ID (EUID) is not equal to 0. The EUID of 0 indicates that the script is being run as the root user
+
+read_passwd_file() - uses cat to display the information from the passwd file
+
+check_file_name()  - defines the file path to be checked and checks if the file exists using the -f flag 
+
+print_home_dir()   - uses echo and $HOME variable to print the home directory
+
+print_usernames()  - uses cut to extract the first field of each line. -d: fields in the file are separated by colons
+
+print_number_of_users() - counts the number of lines in the "/etc/passwd" file. -l flag specifies that only the total number of lines should be counted
+
+find_home_dir():
+- enter a username and stores the input in the username variable.
+- searches for the specified username followed by a colon (:)
+- extracts the sixth field (represents the home directory) 
+- assign the output to the user_home variable and print 
+
+print_users_UID() - not working!
+
+users_with_standard_shells() - searches for lines in the file, -E flag enables extended regular expressions, and "/bin/(bash|sh)" matches either "/bin/bash" or "/bin/sh"
+					
+replace() - uses sed to perform a global search, replace the caracthers and store the output into the "/tmp/passwd_backup" file
+
+print_privateIP() - retrieves the list of IP addresses. Pipe (|) is used to redirect the output to another command. The second command uses cut to extract the first field (-f1) of each line
+
+print_publicIP() - fetches the public IP address from "ifconfig.me" using curl
+
+switch_user() - uses su to start the shell of the target user (john)
